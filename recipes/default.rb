@@ -23,8 +23,11 @@ when 'windows'
 
   # https://github.com/opscode-cookbooks/git/pull/19/files
   ENV['PATH'] += ";#{node['dmi']['path']}"
-  windows_path node['dmi']['path'] do
-    action :add
+  env 'add dmi to path' do
+    key_name 'path'
+    action :modify
+    delim ::File::PATH_SEPARATOR
+    value node['dmi']['path'].tr('/', '\\')
     notifies :reload, 'ohai[reload_dmi]', :immediately
   end
 when 'rhel', 'debian'
