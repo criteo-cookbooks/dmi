@@ -2,20 +2,22 @@
 language: ruby
 cache: bundler
 rvm:
-- 2.2.2
+- 2.3.0
+sudo: false
 deploy:
-  edge: true
+  edge:
+    source: criteo-forks/dpl
+    branch: chef_ruby2
+  skip_cleanup: true
   provider: chef-supermarket
   user_id: criteo
   cookbook_category: Operating Systems & Virtualization
   client_key: ".travis/client.pem"
   on:
     tags: true
-    all_branches: true
 before_install:
 - openssl aes-256-cbc -K $encrypted_f19c3ca031c8_key -iv $encrypted_f19c3ca031c8_iv
   -in .travis/travis-ci.pem.enc -out ~/.ssh/id_rsa -d
-- rvm 1.9.3 --fuzzy do ruby -S gem update bundler
 env:
   global:
   - secure: cqCAVrHO8VJQNFKQgvTEqS/rodvdiZmS2H0iv3HkQQ7yrrXVJZPDhbg1iGA3H8xgdDc3RCbK6Jf8A6G7Hs2cgpy6Nr6GScT2DHxz7faDxnYg9JHIzlM/bxaL5LsBg8shXkRzMtNuNTSU6eA5hK8A6lAO3vFb2BhWrcvGwpyE+ZP+dWsoP5GJGI7ZDok4FT7CHMWPhjMBYG7erbmupaqjtW4/p96ElCZRZ6fGwKs+0901eIy4Z8HxdM8PCdY/bGg19iByarv1BLf/wJBQ+IyzZxyxs83Fqjm4RPqMriF9r1i1XWZjv1vDeme6NqiRYIqszDQGsfmwSlRexHDNVZrqCy8jYi/ntAuDTmmbjThxNsM0LXExaUrgbwoiQvIr5Jv1QbIEjEcAAjrdATQC+RffQm/+Zv/JrWmV8X09gGKDJkPw/qu22rt3gNYjGxnRCW9CHpA16RaRjRwUIVjJnYAL/3KXOTN4XvZIxmMCeqtZ/YxVBX/xk3X9M5XoUNlvwzQjPrKcP7WJFptoBljp1ZIHtDzKZRTeDhnhVXGnYz9B6DnuZbrcFAj/ErPeuRl2Et/+7yl2SwoRqCeEZOlESXY4j2cvk3ByLj0/X1zUHY1ec/yufIWs4vE2Yc9G2JzdMT938bMU4l9ft1MtHi+GPCEB52rOk4vMBKM6M2EJXKAB/sc=
