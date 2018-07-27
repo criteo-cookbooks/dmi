@@ -6,7 +6,7 @@ gem 'chefspec'
 gem 'rake'
 gem 'foodcritic'
 gem 'chef-zero-scheduled-task'
-gem 'chef'
+gem 'chef', '< 14.0.0'
 
 gem 'kitchen-transport-speedy'
 group :ec2 do
