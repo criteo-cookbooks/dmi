@@ -7,10 +7,6 @@ AllCops:
   TargetRubyVersion: 2.2
 
 
-# This requires to alphabetically sort Gem's requirements
-Gemfile.Bundler/OrderedGems:
-  Enabled: false
-
 # This requires to add a comment inside nearly all file which could be
 # considered as toil without value
 Style/FrozenStringLiteralComment:
@@ -23,7 +19,9 @@ Metrics/LineLength:
 # Based on data from http://sideeffect.kr/popularconvention#ruby
 #
 ### Comma after each line in a list
-Style/TrailingCommaInLiteral:
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
+Style/TrailingCommaInHashLiteral:
   EnforcedStyleForMultiline: comma
 # It is very common to add key/value pairs to hashes in Chef attributes. Making
 # sure each line has a comma diminishes the chance of someone making an error
@@ -43,7 +41,7 @@ Style/TrailingCommaInLiteral:
 #   }
 #
 ### Align hashes as a table
-Style/AlignHash:
+Layout/AlignHash:
   EnforcedColonStyle: table
   EnforcedHashRocketStyle: key
 # When dealing with long key names, it is easier to read hashes in colon
@@ -73,7 +71,7 @@ Metrics/MethodLength:
   Max: 40
 
 # This rule generates many false positive
-Style/VariableNumber:
+Naming/VariableNumber:
   Enabled: false
 
 # This metric is hard to grasp but let's avoid delirious code
@@ -106,5 +104,5 @@ Style/Documentation:
   Enabled: false
 
 # Filename forces snake case for file names, we just want consistency for now
-Style/FileName:
+Naming/FileName:
   Enabled: false

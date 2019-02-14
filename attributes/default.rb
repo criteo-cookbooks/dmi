@@ -1,5 +1,5 @@
 #
-# Cookbook Name::	dmi
+# Cookbook Name::  dmi
 # Description::   Default attributes
 # Recipe::        default.rb
 #
