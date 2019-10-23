@@ -12,4 +12,7 @@ when 'windows'
   default['dmi']['package']['sha256sum'] = 'f1ad42daaf68eb0b61aad47144def4beada098b313ce9f61442589c354411128'
   # --[ NOTE: Also used in OHAI ]--
   default['dmi']['path'] = 'C:\Program Files (x86)\GnuWin32\sbin'
+when 'rhel', 'debian'
+  default['dmi']['package']['version'] = nil
+  default['dmi']['package']['options'] = nil
 end
