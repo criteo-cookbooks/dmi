@@ -32,6 +32,8 @@ when 'windows'
   end
 when 'rhel', 'debian'
   package 'dmidecode' do
+    version node['dmi']['package']['version'] if node['dmi']['package']['version']
+    options node['dmi']['package']['options'] if node['dmi']['package']['options']
     notifies :reload, 'ohai[reload_dmi]', :immediately
   end
 end
