@@ -12,6 +12,10 @@ ohai 'reload_dmi' do
   action :nothing
 end
 
+reboot 'Apply dmidecode installation' do
+  action :nothing
+end
+
 case node['platform_family']
 when 'windows'
   windows_package node['dmi']['package']['name'] do
@@ -28,7 +32,7 @@ when 'windows'
     action :modify
     delim ::File::PATH_SEPARATOR
     value node['dmi']['path'].tr('/', '\\')
-    notifies :reload, 'ohai[reload_dmi]', :immediately
+    notifies :request_reboot, 'reboot[Apply dmidecode installation]'
   end
 when 'rhel', 'debian'
   package 'dmidecode' do
